@@ -1,0 +1,57 @@
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
+
+sourceCompatibility = 1.7
+group = 'com.notsocomplex'
+version = '0.1'
+
+war {        
+    manifest {
+        attributes 'Implementation-Title': 'Tomcat 8 with gradle', 'Implementation-Version': version
+    }
+}
+    
+buildscript {
+	repositories {
+    	jcenter()
+	}
+	dependencies {
+   		classpath 'org.akhikhl.gretty:gretty:+'
+	}
+}
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+}
+
+gretty {
+	
+	// Force usage of Tomcat 8
+	servletContainer = 'tomcat8'
+	
+	// The port used by Tomcat for incoming HTTP requests
+	httpPort = 8080
+	
+	// Enable support for HTTPS
+	httpsEnabled = true
+	
+	// The port used by Tomcat for incoming HTTPS requests
+	httpsPort = 8443
+	
+	// When debugging, this is the port for remote connection. Default is 5005
+	debugPort = 8000
+	
+	// If you want to suspend the startup of Tomcat until you start a debug session
+  	debugSuspend = false
+  	
+  	// Override the context path of your web-app within Tomcat. Leave as empty string (contextPath='') 
+  	// to mount on the root of your domain
+	contextPath = '/tomcat8-with-gradle'
+}
