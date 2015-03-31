@@ -17,7 +17,7 @@ war {
     
 buildscript {
 	repositories {
-    	jcenter()
+		jcenter()
 	}
 	dependencies {
 		// Get the latest version of Gretty using +
