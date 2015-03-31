@@ -20,6 +20,7 @@ buildscript {
     	jcenter()
 	}
 	dependencies {
+		// Get the latest version of Gretty using +
    		classpath 'org.akhikhl.gretty:gretty:+'
 	}
 }
@@ -28,11 +29,7 @@ repositories {
 	jcenter()
 }
 
-dependencies {
-}
-
-gretty {
-	
+gretty {	
 	// Force usage of Tomcat 8
 	servletContainer = 'tomcat8'
 	
